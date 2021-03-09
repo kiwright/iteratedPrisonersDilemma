@@ -3,7 +3,7 @@
  * @author	081028AW
  */
 public class StrategyTitForTat extends Strategy
-   {
+{
   /**
    * Encoding for tit-for-tat strategy.
    */
@@ -11,15 +11,15 @@ public class StrategyTitForTat extends Strategy
   // 0 = defect, 1 = cooperate
 
    public StrategyTitForTat()
-      {
+   {
       name = "Tit for Tat";
       opponentLastMove = 1;
-      }  /* StrategyTitForTat */
+   }  /* StrategyTitForTat */
 
    public int nextMove()
-      {
+   {
       return opponentLastMove;
-      }  /* nextMove */
+   }  /* nextMove */
 
-   }  /* class StrategyTitForTat */
+}  /* class StrategyTitForTat */
 

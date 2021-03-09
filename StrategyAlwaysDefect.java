@@ -3,7 +3,7 @@
  * @author	081028AW
  */
 public class StrategyAlwaysDefect extends Strategy
-   {
+{
   /**
    * Encoding for a strategy.
    */
@@ -11,13 +11,13 @@ public class StrategyAlwaysDefect extends Strategy
   // 0 = defect, 1 = cooperate
 
    public StrategyAlwaysDefect()
-      {
+   {
       name = "Always defect";
-      }  /* StrategyAlwaysDefect */
+   }  /* StrategyAlwaysDefect */
 
    public int nextMove()
-      {
+   {
       return 0;
-      }  /* nextMove */
-   }  /* class StrategyAlwaysDefect */
+   }  /* nextMove */
+}  /* class StrategyAlwaysDefect */
 
