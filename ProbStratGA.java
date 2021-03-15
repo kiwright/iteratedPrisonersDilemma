@@ -10,7 +10,7 @@ public class ProbStratGA extends FitnessFunction {
 *                              CONSTRUCTORS                                    *
 *******************************************************************************/
 
-	public ProbStratGA(){
+	public ProbStrat(){
 		name = "ProbStrat Problem";
 	}
 
@@ -24,7 +24,8 @@ public class ProbStratGA extends FitnessFunction {
 
 		X.rawFitness = 0;
 		for (int z=0; z<Parameters.numGenes * Parameters.geneSize; z++){
-			//TODO: RUN TOURNAMENT to get fitness
+            //TODO: RUN TOURNAMENT to get fitness
+			if (X.chromo.charAt(z) == '1') X.rawFitness += 1;
 		}
 	}
 
