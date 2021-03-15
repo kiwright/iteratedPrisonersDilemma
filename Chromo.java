@@ -168,8 +168,10 @@ public class Chromo
 
 	public static void mateParents(int pnum1, int pnum2, Chromo parent1, Chromo parent2, Chromo child1, Chromo child2){
 
-		int xoverPoint1;
-		int xoverPoint2;
+		int xoverPoint1, xoverPoint2, len, temp;
+		double prob;
+		char [] chrom1 = parent1.chromo.toCharArray();
+		char [] chrom2 = parent2.chromo.toCharArray();
 
 		switch (Parameters.xoverType){
 
@@ -184,9 +186,39 @@ public class Chromo
 			break;
 
 		case 2:     //  Two Point Crossover
+			xoverPoint1 = 1 + (int)(Search.r.nextDouble() * (Parameters.numGenes * Parameters.geneSize-1));
+			xoverPoint2 = 1 + (int)(Search.r.nextDouble() * (Parameters.numGenes * Parameters.geneSize-1));
+
+			if(xoverPoint1 > xoverPoint2)
+			{
+				temp = xoverPoint1;
+				xoverPoint1 = xoverPoint2;
+				xoverPoint2 = temp;
+			}
+
+			child1.chromo = parent1.chromo.substring(0, xoverPoint1) + parent2.chromo.substring(xoverPoint1, xoverPoint2) + parent1.chromo.substring(xoverPoint2);
+			child2.chromo = parent2.chromo.substring(0, xoverPoint1) + parent1.chromo.substring(xoverPoint1, xoverPoint2) + parent2.chromo.substring(xoverPoint2);
+			break;
 
 		case 3:     //  Uniform Crossover
+			
+			len = parent1.chromo.length();
+			
+			for(int i = 0; i < len; i++)
+			{
+				prob = Search.r.nextDouble();
 
+				if(prob > 0.5)
+				{
+					chrom2[i]= parent1.chromo.charAt(i);
+					chrom1[i] = parent2.chromo.charAt(i);
+				}
+			}
+
+			child1.chromo = new String(chrom1);
+			child2.chromo = new String(chrom2);
+			break;
+				
 		default:
 			System.out.println("ERROR - Bad crossover method selected");
 		}
